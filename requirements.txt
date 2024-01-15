@@ -1,0 +1,6 @@
+requests==2.26.0
+tqdm==4.62.3
+python-dotenv==0.19.1
+schedule==1.1.0
+croniter==1.0.15
+rich==10.11.0

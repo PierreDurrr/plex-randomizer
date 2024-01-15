@@ -1,0 +1,18 @@
+---
+version: "2.1"
+services:
+  randomarr:
+    image: pierredurrr/randomarr:latest
+    env_file:
+      - .env
+    environment:
+      - INFO="PRIVATE REPOSITORY"
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Paris
+    volumes:
+      - /mnt/_SYNOLOGY/Mediatheque/Films:/mnt/_SYNOLOGY/Mediatheque/Films:ro
+      - /mnt/_SYNOLOGY/Mediatheque/Suggestions:/mnt/_SYNOLOGY/Mediatheque/Suggestions:rw
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
