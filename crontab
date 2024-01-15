@@ -12,4 +12,4 @@
 0 7 * * * echo "───────────────────────────────────────" > /proc/1/fd/1 && date > /proc/1/fd/1 && echo "What are we going to get today ?" > /proc/1/fd/1 && echo "───────────────────────────────────────" > /proc/1/fd/1 && python3 /app/scripts/movies_random.py > /proc/1/fd/1
 #
 ##########################################
-
+##
