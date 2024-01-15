@@ -2,7 +2,6 @@
 @reboot echo "Starting, let's go! - $(date)" > /proc/1/fd/1
 @reboot echo "───────────────────────────────────────" > /proc/1/fd/1
 #* * * * * date > /proc/1/fd/1
-#* * * * * date | echo "Crontab is working - watchdog 1 - Waiting for next run to start..." > /proc/1/fd/1 
 #
 ##########################################
 # PLEX RANDOM MOVIES OF THE DAY        ###
