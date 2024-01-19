@@ -7,20 +7,33 @@ from rich.progress import Progress
 from dotenv import load_dotenv
 import requests
 
+# Specify the path to your .env file
+dotenv_path = '/config/.env'
+
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv(dotenv_path)
+
+## Load environment variables from .env file
+#load_dotenv()
 
 # Get Plex login credentials from environment variables
 plex_login = os.getenv("PLEX_LOGIN")
 plex_password = os.getenv("PLEX_PASSWORD")
 
-# User-defined variable for action (copy or symlink)
-action_type = os.getenv("ACTION_TYPE", "copy")  # Default to "copy" if not specified
+# Get Plex library section ID from environment variable
+plex_library_section_id_str = os.getenv("PLEX_LIBRARY_SECTION_ID")
 
-# User-defined variables for Plex server and library
-plex_server_address = os.getenv("PLEX_SERVER_ADDRESS")
-plex_server_port = os.getenv("PLEX_SERVER_PORT")
-plex_library_section_id = int(os.getenv("PLEX_LIBRARY_SECTION_ID"))
+# Check if the environment variable is set
+if plex_library_section_id_str is not None:
+    try:
+        # Convert to integer
+        plex_library_section_id = int(plex_library_section_id_str)
+    except ValueError:
+        print(f"Error: PLEX_LIBRARY_SECTION_ID '{plex_library_section_id_str}' is not a valid integer.")
+        exit(1)
+else:
+    print("Error: PLEX_LIBRARY_SECTION_ID is not set in the environment.")
+    exit(1)
 
 # User-defined variables for source and destination folders
 source_folder = os.getenv("SOURCE_FOLDER")
@@ -28,6 +41,13 @@ destination_folder = os.getenv("DESTINATION_FOLDER")
 
 # User-defined variable for the amount of wanted movies
 amount_of_wanted_movies = int(os.getenv("AMOUNT_OF_WANTED_MOVIES", 3))
+
+# User-defined variables for Plex server and library
+plex_server_address = os.getenv("PLEX_SERVER_ADDRESS")
+plex_server_port = os.getenv("PLEX_SERVER_PORT")
+
+# User-defined variable for action (copy or symlink)
+action_type = os.getenv("ACTION_TYPE", "copy")  # Default to "copy" if not specified
 
 # Check if PLEX_LOGIN and PLEX_PASSWORD are set
 if not (plex_login and plex_password):
