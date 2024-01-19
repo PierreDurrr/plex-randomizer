@@ -1,19 +1,20 @@
 ---
 version: "2.1"
 services:
-  randomarr:
-    image: pierredurrr/randomarr:latest
+  plex-randomizer:
+    image: pierredurrr/plex-randomizer:latest
     env_file:
-      - .env
+      - /docker_data2/plex-randomizer/.env
     environment:
       - INFO="PRIVATE REPOSITORY"
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Paris
     volumes:
+      - /docker_data2/plex-randomizer/config:/config
       - /mnt/_SYNOLOGY/Mediatheque/Films:/mnt/_SYNOLOGY/Mediatheque/Films:ro
       - /mnt/_SYNOLOGY/Mediatheque/Suggestions:/mnt/_SYNOLOGY/Mediatheque/Suggestions:rw
     restart: unless-stopped
+    network_mode: bridge
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
-
