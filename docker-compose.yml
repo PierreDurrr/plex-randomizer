@@ -2,6 +2,7 @@
 version: "2.1"
 services:
   plex-randomizer:
+    container_name: plex-randomizer
     image: pierredurrr/plex-randomizer:latest
     env_file:
       - /docker_data2/plex-randomizer/.env
