@@ -13,8 +13,8 @@ services:
       - TZ=Europe/Paris
     volumes:
       - /docker_data2/plex-randomizer/config:/config
-      - /mnt/_SYNOLOGY/Mediatheque/Films:/mnt/_SYNOLOGY/Mediatheque/Films:ro
-      - /mnt/_SYNOLOGY/Mediatheque/Suggestions:/mnt/_SYNOLOGY/Mediatheque/Suggestions:rw
+      - /mnt/_SYNOLOGY/media/mediatheque/Films:/mnt/_SYNOLOGY/media/mediatheque/Films:ro
+      - /mnt/_SYNOLOGY/media/mediatheque/Suggestions:/mnt/_SYNOLOGY/media/mediatheque/Suggestions:rw
     restart: unless-stopped
     network_mode: bridge
     labels:
